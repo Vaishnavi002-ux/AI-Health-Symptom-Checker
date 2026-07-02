@@ -1,0 +1,217 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>HealthAI – Project Deliverables</title>
+<style>
+  :root{--blue:#1a73e8;--green:#34a853;--orange:#ff6d00;--red:#ea4335;--bg:#fff;--surf:#f8f9fa;--border:#dadce0;--text:#202124;--muted:#5f6368;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;}
+  .header{background:linear-gradient(135deg,#e8f0fe,#f8f9fa);padding:2rem 1.5rem 1.5rem;text-align:center;border-bottom:1px solid var(--border);}
+  .header h1{font-size:1.7rem;font-weight:800;color:var(--blue);margin-bottom:.3rem;}
+  .header p{color:var(--muted);font-size:.9rem;}
+  .tag{display:inline-block;background:#e8f0fe;color:var(--blue);border-radius:999px;padding:.2rem .7rem;font-size:.75rem;font-weight:600;margin:.15rem;}
+  .main{max-width:760px;margin:0 auto;padding:1.5rem;}
+  h2{font-size:1rem;font-weight:700;color:var(--text);margin:1.8rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:.5rem;}
+  .icon{display:inline-block;width:22px;height:22px;border-radius:50%;font-size:.75rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;}
+  .icon-blue{background:#e8f0fe;color:var(--blue);}
+  .icon-green{background:#e6f4ea;color:var(--green);}
+  .icon-orange{background:#fff3e0;color:var(--orange);}
+  .icon-red{background:#fce8e6;color:var(--red);}
+  /* File tree */
+  .tree{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-family:"Courier New",monospace;font-size:.78rem;line-height:1.9;overflow-x:auto;}
+  .tree .dir{color:var(--blue);font-weight:600;}
+  .tree .file{color:var(--text);}
+  .tree .comment{color:var(--muted);}
+  /* Table */
+  table{width:100%;border-collapse:collapse;font-size:.83rem;margin-bottom:.5rem;}
+  th{background:var(--surf);padding:.5rem .75rem;text-align:left;font-weight:700;color:var(--muted);text-transform:uppercase;font-size:.7rem;letter-spacing:.05em;border-bottom:1px solid var(--border);}
+  td{padding:.5rem .75rem;border-bottom:1px solid var(--border);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  /* Badges */
+  .badge{display:inline-block;padding:.15rem .55rem;border-radius:999px;font-size:.7rem;font-weight:600;}
+  .b-blue{background:#e8f0fe;color:var(--blue);}
+  .b-green{background:#e6f4ea;color:#137333;}
+  .b-orange{background:#fff3e0;color:#b05e00;}
+  .b-red{background:#fce8e6;color:var(--red);}
+  .b-gray{background:#f1f3f4;color:var(--muted);}
+  /* Steps */
+  .steps{display:flex;flex-direction:column;gap:.5rem;}
+  .step{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem .9rem;background:var(--surf);border:1px solid var(--border);border-radius:8px;}
+  .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .step-body{flex:1;}
+  .step-title{font-weight:700;font-size:.87rem;}
+  .step-desc{color:var(--muted);font-size:.8rem;margin-top:.1rem;}
+  /* Warning box */
+  .warn{background:#fff8e1;border:1px solid #f9a825;border-left:4px solid #f9a825;border-radius:8px;padding:.85rem 1rem;font-size:.83rem;color:#5d4037;margin-top:1rem;}
+  /* Code */
+  code{background:var(--surf);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;font-family:"Courier New",monospace;}
+  pre{background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:1rem;font-size:.78rem;overflow-x:auto;line-height:1.7;margin:.5rem 0;}
+  pre .kw{color:#569cd6;}
+  pre .str{color:#ce9178;}
+  pre .cm{color:#6a9955;}
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.5rem;}
+  .feat{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;}
+  .feat-title{font-weight:700;font-size:.85rem;margin-bottom:.2rem;}
+  .feat-desc{font-size:.78rem;color:var(--muted);}
+  @media(max-width:540px){.feature-grid{grid-template-columns:1fr;}}
+  footer{border-top:1px solid var(--border);text-align:center;padding:1rem;font-size:.75rem;color:var(--muted);margin-top:2rem;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏥 HealthAI Symptom Checker</h1>
+  <p>Agentic AI · IBM watsonx.ai Granite · IBM Cloud Lite</p>
+  <div style="margin-top:.75rem">
+    <span class="tag">React.js</span>
+    <span class="tag">Flask</span>
+    <span class="tag">IBM Granite</span>
+    <span class="tag">SQLite</span>
+    <span class="tag">Dark Mode</span>
+    <span class="tag">Voice Input</span>
+    <span class="tag">PDF Reports</span>
+  </div>
+</div>
+
+<div class="main">
+
+  
+  <h2><span class="icon icon-green">✓</span> Build Status</h2>
+  <table>
+    <tr><th>Layer</th><th>Files</th><th>Status</th></tr>
+    <tr><td>Backend (Flask)</td><td>10 Python files</td><td><span class="badge b-green">Complete</span></td></tr>
+    <tr><td>Frontend (React)</td><td>15 JS files + CSS</td><td><span class="badge b-green">Complete</span></td></tr>
+    <tr><td>Config &amp; Docs</td><td>.env.example, README, ARCHITECTURE</td><td><span class="badge b-green">Complete</span></td></tr>
+    <tr><td>IBM Granite Integration</td><td>ai_service.py + prompt_builder.py</td><td><span class="badge b-green">Complete</span></td></tr>
+    <tr><td>Emergency Detection</td><td>medical_data.py + agent_controller.py</td><td><span class="badge b-green">Complete</span></td></tr>
+  </table>
+
+  
+  <h2><span class="icon icon-blue">📁</span> Complete File Structure</h2>
+  <div class="tree">
+<span class="dir">Agentic-AI-Health-Checker/</span><br />
+├── <span class="dir">backend/</span><br />
+│   ├── <span class="file">app.py</span> <span class="comment">— Flask app factory + error handlers</span><br />
+│   ├── <span class="file">routes.py</span> <span class="comment">— /analyze /followup /history /generate-report</span><br />
+│   ├── <span class="file">agent_controller.py</span> <span class="comment">— Agentic workflow state machine</span><br />
+│   ├── <span class="file">ai_service.py</span> <span class="comment">— IBM watsonx.ai Granite API + token cache</span><br />
+│   ├── <span class="file">prompt_builder.py</span> <span class="comment">— Structured prompts for Granite</span><br />
+│   ├── <span class="file">medical_data.py</span> <span class="comment">— Emergency keywords, symptom categories</span><br />
+│   ├── <span class="file">models.py</span> <span class="comment">— SQLAlchemy ORM (Session, FollowUp, Report)</span><br />
+│   ├── <span class="file">utils.py</span> <span class="comment">— Input validation, sanitization, error builders</span><br />
+│   ├── <span class="file">config.py</span> <span class="comment">— Environment-based configuration</span><br />
+│   ├── <span class="file">wsgi.py</span> <span class="comment">— Gunicorn entry point</span><br />
+│   ├── <span class="file">Procfile</span> <span class="comment">— IBM Cloud deployment</span><br />
+│   └── <span class="file">requirements.txt</span><br />
+│<br />
+├── <span class="dir">frontend/</span><br />
+│   ├── <span class="dir">public/</span> index.html<br />
+│   └── <span class="dir">src/</span><br />
+│       ├── <span class="file">App.js</span> <span class="comment">— Router + dark mode</span><br />
+│       ├── <span class="file">index.js</span> <span class="comment">— React 18 entry point</span><br />
+│       ├── <span class="file">index.css</span> <span class="comment">— Global styles + CSS variables (dark mode)</span><br />
+│       ├── <span class="dir">components/</span><br />
+│       │   ├── <span class="file">ChatInterface.js</span> <span class="comment">— Main agentic chat + voice input</span><br />
+│       │   ├── <span class="file">ResultsDisplay.js</span> <span class="comment">— Structured analysis renderer</span><br />
+│       │   ├── <span class="file">ProgressStepper.js</span> <span class="comment">— 4-step workflow indicator</span><br />
+│       │   ├── <span class="file">Navbar.js</span> <span class="comment">— Responsive nav + dark mode toggle</span><br />
+│       │   ├── <span class="file">Footer.js</span><br />
+│       │   └── <span class="file">Disclaimer.js</span> <span class="comment">— Educational disclaimer component</span><br />
+│       ├── <span class="dir">pages/</span><br />
+│       │   ├── <span class="file">LandingPage.js</span> <span class="comment">— Hero, features, how-it-works</span><br />
+│       │   ├── <span class="file">AboutPage.js</span> <span class="comment">— Architecture, tech stack, safety rules</span><br />
+│       │   ├── <span class="file">SymptomCheckerPage.js</span> <span class="comment">— Wraps ChatInterface</span><br />
+│       │   ├── <span class="file">EmergencyPage.js</span> <span class="comment">— Emergency numbers + FAST signs</span><br />
+│       │   ├── <span class="file">HistoryPage.js</span> <span class="comment">— Paginated session history</span><br />
+│       │   └── <span class="file">ContactPage.js</span><br />
+│       └── <span class="dir">services/</span><br />
+│           └── <span class="file">api.js</span> <span class="comment">— Axios service layer (analyze, followup, history)</span><br />
+│<br />
+├── <span class="dir">docs/</span><br />
+│   └── <span class="file">ARCHITECTURE.md</span> <span class="comment">— State machines, DB schema, API reference</span><br />
+├── <span class="file">.env.example</span> <span class="comment">— All required environment variables</span><br />
+└── <span class="file">README.md</span> <span class="comment">— Full setup + deployment guide</span>
+  </div>
+
+  
+  <h2><span class="icon icon-blue">🤖</span> Agentic AI Workflow</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">User Enters Symptoms</div><div class="step-desc">Natural language input via chat UI. Voice input supported via Web Speech API.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Emergency Detection</div><div class="step-desc">40+ emergency keywords scanned. Immediate escalation if match found — no AI call made.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Information Assessment</div><div class="step-desc">Heuristic check for temporal context, severity, and length. Decides if follow-up is needed.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Follow-up Questions (IBM Granite)</div><div class="step-desc">Up to 3 targeted follow-up questions generated by Granite. Avoids repeating questions already asked.</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Structured Prompt Construction</div><div class="step-desc">Full conversation history + patient context assembled into a rigidly structured prompt.</div></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-title">IBM Granite Inference</div><div class="step-desc">Sent to IBM watsonx.ai REST API with IAM bearer token (cached with 5-min refresh buffer).</div></div></div>
+    <div class="step"><div class="step-num">7</div><div class="step-body"><div class="step-title">Response Parsing</div><div class="step-desc">Regex-based section extraction: Conditions, Urgency, Reason, Home Care, Prevention, Consult, Disclaimer.</div></div></div>
+    <div class="step"><div class="step-num">8</div><div class="step-body"><div class="step-title">Structured Results Display</div><div class="step-desc">Urgency banner, conditions, care tips, disclaimer rendered. Downloadable JSON report.</div></div></div>
+  </div>
+
+  
+  <h2><span class="icon icon-orange">🔌</span> Backend API Endpoints</h2>
+  <table>
+    <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+    <tr><td><span class="badge b-blue">POST</span></td><td><code>/api/analyze</code></td><td>Start new session — symptoms + optional patient context</td></tr>
+    <tr><td><span class="badge b-blue">POST</span></td><td><code>/api/followup</code></td><td>Submit answer to follow-up question</td></tr>
+    <tr><td><span class="badge b-green">GET</span></td><td><code>/api/history</code></td><td>Paginated session history (<code>?limit&amp;offset</code>)</td></tr>
+    <tr><td><span class="badge b-blue">POST</span></td><td><code>/api/generate-report</code></td><td>Generate structured report for a session</td></tr>
+    <tr><td><span class="badge b-green">GET</span></td><td><code>/api/health</code></td><td>Service health check</td></tr>
+  </table>
+
+  
+  <h2><span class="icon icon-green">✨</span> Implemented Features</h2>
+  <div class="feature-grid">
+    <div class="feat"><div class="feat-title">💬 Agentic Chat UI</div><div class="feat-desc">Full conversation flow with IBM Granite follow-up generation</div></div>
+    <div class="feat"><div class="feat-title">🎤 Voice Input</div><div class="feat-desc">Web Speech API integration in ChatInterface</div></div>
+    <div class="feat"><div class="feat-title">🌙 Dark Mode</div><div class="feat-desc">CSS variable-based, persisted in localStorage</div></div>
+    <div class="feat"><div class="feat-title">🚨 Emergency Detection</div><div class="feat-desc">40+ keywords, instant redirect, F.A.S.T. stroke signs page</div></div>
+    <div class="feat"><div class="feat-title">📊 Urgency Classifier</div><div class="feat-desc">LOW / MEDIUM / HIGH / EMERGENCY with color-coded banner</div></div>
+    <div class="feat"><div class="feat-title">📋 Session History</div><div class="feat-desc">Paginated, expandable with full Q&amp;A history</div></div>
+    <div class="feat"><div class="feat-title">📄 Report Download</div><div class="feat-desc">Structured JSON health report per session</div></div>
+    <div class="feat"><div class="feat-title">📱 Responsive UI</div><div class="feat-desc">Mobile-first CSS, hamburger menu, fluid grids</div></div>
+    <div class="feat"><div class="feat-title">🛡 Educational Disclaimer</div><div class="feat-desc">Persistent on every page and result view</div></div>
+    <div class="feat"><div class="feat-title">🔒 Credential Security</div><div class="feat-desc">All IBM credentials via .env, never hardcoded</div></div>
+    <div class="feat"><div class="feat-title">🔄 IAM Token Cache</div><div class="feat-desc">Bearer token reused until 5 min before expiry</div></div>
+    <div class="feat"><div class="feat-title">🗄 SQLite → MongoDB Ready</div><div class="feat-desc">SQLAlchemy ORM designed for easy engine swap</div></div>
+  </div>
+
+  
+  <h2><span class="icon icon-blue">🚀</span> Quick Setup</h2>
+  <pre><span class="cm"># 1. Copy environment variables</span>
+cp .env.example .env
+<span class="cm"># Add your IBM credentials to .env</span>
+
+<span class="cm"># 2. Start backend</span>
+cd backend
+python -m venv venv
+venv\Scripts\activate        <span class="cm"># Windows</span>
+pip install -r requirements.txt
+python app.py                <span class="cm"># http://localhost:5000</span>
+
+<span class="cm"># 3. Start frontend</span>
+cd frontend
+npm install
+npm start                    <span class="cm"># http://localhost:3000</span></pre>
+
+  
+  <h2><span class="icon icon-red">🔑</span> Required Environment Variables</h2>
+  <table>
+    <tr><th>Variable</th><th>Description</th><th>Required</th></tr>
+    <tr><td><code>IBM_API_KEY</code></td><td>IBM Cloud API Key</td><td><span class="badge b-red">Required</span></td></tr>
+    <tr><td><code>IBM_PROJECT_ID</code></td><td>watsonx.ai Project ID</td><td><span class="badge b-red">Required</span></td></tr>
+    <tr><td><code>IBM_CLOUD_URL</code></td><td>e.g. https://us-south.ml.cloud.ibm.com</td><td><span class="badge b-orange">Default set</span></td></tr>
+    <tr><td><code>IBM_MODEL_ID</code></td><td>ibm/granite-13b-chat-v2</td><td><span class="badge b-orange">Default set</span></td></tr>
+    <tr><td><code>SECRET_KEY</code></td><td>Flask secret key</td><td><span class="badge b-orange">Change in prod</span></td></tr>
+    <tr><td><code>DATABASE_URL</code></td><td>SQLite URI or MongoDB URI</td><td><span class="badge b-gray">Optional</span></td></tr>
+  </table>
+
+  
+  <div class="warn">
+    <strong>⚠ Safety Rules (enforced in system prompt + agent code):</strong> Never diagnoses diseases · Never prescribes medications · Never suggests dosages · Always includes disclaimer · Immediately escalates emergencies · Encourages professional consultation.
+  </div>
+
+</div>
+<footer>Made with IBM Bob  |  HealthAI Symptom Checker — Educational Use Only</footer>
+</body>
+</html>
