@@ -21,19 +21,21 @@ load_dotenv(
 logger = logging.getLogger(__name__)
 
 # ── IAM token cache ──────────────────────────────────────────────────────────
-_token_cache = {"access_token": None, "expiry": 0}
+_token_cache = {"access_token": None, "expiry": 0, "api_key": ""}
 TOKEN_EXPIRY_BUFFER = 300   # refresh 5 min before expiry
 MAX_RETRIES = 3             # retry on transient connection errors
 RETRY_DELAY = 2             # seconds between retries
 
 
 def _get_credentials() -> dict:
-    """Read credentials live from os.environ (never from frozen class attrs)."""
+    """Re-read .env on every call so a key change takes effect without restart."""
+    _env_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    load_dotenv(_env_file, override=True, encoding="utf-8-sig")
     return {
         "api_key":    os.environ.get("IBM_API_KEY",    "").strip(),
         "project_id": os.environ.get("IBM_PROJECT_ID", "").strip(),
         "cloud_url":  os.environ.get("IBM_CLOUD_URL",  "https://us-south.ml.cloud.ibm.com").strip(),
-        "model_id":   os.environ.get("IBM_MODEL_ID",   "ibm/granite-13b-chat-v2").strip(),
+        "model_id":   os.environ.get("IBM_MODEL_ID",   "ibm/granite-3-8b-instruct").strip(),
         "iam_url":    "https://iam.cloud.ibm.com/identity/token",
     }
 
@@ -94,12 +96,18 @@ def _make_request(method: str, url: str, **kwargs) -> requests.Response:
 
 def _get_iam_token() -> str:
     """Get a valid IBM IAM bearer token, using cached token if still fresh."""
-    now = time.time()
-    if _token_cache["access_token"] and now < _token_cache["expiry"] - TOKEN_EXPIRY_BUFFER:
-        return _token_cache["access_token"]
-
     creds = _get_credentials()
     api_key = creds["api_key"]
+
+    # Invalidate cache if the API key has changed (e.g. new key written to .env)
+    now = time.time()
+    if (
+        _token_cache["access_token"]
+        and now < _token_cache["expiry"] - TOKEN_EXPIRY_BUFFER
+        and _token_cache["api_key"] == api_key
+    ):
+        return _token_cache["access_token"]
+
     logger.info("Requesting IBM IAM token (key: ...%s)", api_key[-6:] if api_key else "EMPTY")
 
     try:
@@ -117,6 +125,7 @@ def _get_iam_token() -> str:
         token_data = resp.json()
         _token_cache["access_token"] = token_data["access_token"]
         _token_cache["expiry"] = now + token_data.get("expires_in", 3600)
+        _token_cache["api_key"] = api_key   # track which key this token belongs to
         logger.info("IBM IAM token obtained successfully.")
         return _token_cache["access_token"]
 

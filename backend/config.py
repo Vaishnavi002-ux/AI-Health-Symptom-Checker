@@ -32,7 +32,7 @@ class Config:
     IBM_API_KEY = os.environ.get("IBM_API_KEY", "")
     IBM_PROJECT_ID = os.environ.get("IBM_PROJECT_ID", "")
     IBM_CLOUD_URL = os.environ.get("IBM_CLOUD_URL", "https://us-south.ml.cloud.ibm.com")
-    IBM_MODEL_ID = os.environ.get("IBM_MODEL_ID", "ibm/granite-13b-chat-v2")
+    IBM_MODEL_ID = os.environ.get("IBM_MODEL_ID", "ibm/granite-3-8b-instruct")
     IBM_IAM_URL = "https://iam.cloud.ibm.com/identity/token"
 
     # Database
